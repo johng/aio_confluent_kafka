@@ -1,0 +1,95 @@
+[project]
+name = "aio_comdb2_kafka"
+authors = [
+    {name = "John Griffith", email = "me@joh.ng"},
+]
+description = "Asyncio wrapper for confluent_kafka"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "confluent_kafka",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only"
+]
+version = "0.0.1"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "pytest",
+    "pytest-asyncio",
+    "mypy",
+    "pytest",
+]
+
+[build-system]
+requires = ["setuptools>=60.8.2", "wheel>=0.35.1"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.black]
+line-length = 110
+target_version = ['py310']
+include = '\.pyi?$'
+exclude = '''
+(
+    \.eggs         # exclude a few common directories in the
+  | \.git          # root of the project
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | _build
+  | build
+  | dist
+  | venv
+  | _proto
+)
+'''
+
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+exclude = [
+    "venv*",
+    ".tox",
+    "_proto"
+]
+
+[tool.ruff.lint]
+# https://beta.ruff.rs/docs/rules/
+select = ["E", "F", "UP", "PTH", "G", "T10", "A", "PL",  "RUF", "PGH004", "N"]
+ignore = [
+    "PLR", # ALl pylint backpots
+    "N818" # "Exception name `NetworkException` should be named with an Error suffix"
+]
+
+
+[tool.ruff.lint.isort]
+force-single-line = true
+known-first-party = [""]
+
+[tool.mypy]
+files = ["src", "tests"]
+mypy_path = "src"
+python_version = "3.10"
+namespace_packages = true
+explicit_package_bases = true
+strict = true
+show_error_codes = true
+implicit_reexport = true
+show_column_numbers = true
+exclude = ['venv']
+pretty = true
+cache_dir = "/dev/null"
+
+
+disable_error_code = ["type-arg"]
+
+[tool.setuptools]
+packages = [
+    "aio_confluent_kafka",
+]
+package-dir = {""= "src"}
