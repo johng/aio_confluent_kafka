@@ -1,5 +1,5 @@
 [project]
-name = "aio_comdb2_kafka"
+name = "aio_confluent_kafka"
 authors = [
     {name = "John Griffith", email = "me@joh.ng"},
 ]
