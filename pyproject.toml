@@ -93,3 +93,19 @@ packages = [
     "aio_confluent_kafka",
 ]
 package-dir = {""= "src"}
+
+
+[tool.tox]
+requires = ["tox>=4.19"]
+env_list = ["3.13", "3.12", "3.11", "3.10"]
+
+[tool.tox.gh.python]
+"3.13" = ["3.13"]
+"3.12" = ["3.12"]
+"3.11" = ["3.11"]
+"3.10" = ["3.10"]
+
+[tool.tox.env_run_base]
+description = "Run test under {base_python}"
+commands = [["pytest"]]
+deps = ["pytest==8.3.4", "pytest-asyncio==0.25.2"]
