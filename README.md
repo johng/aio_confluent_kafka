@@ -8,6 +8,8 @@ A lightweight wrapper around `confluent_kafka` to enable use with asyncio
 
 ```python
 
+
+
 from aio_confluent_kafka import AIOConsumer
 
 async def run_consumer():
